@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <title>Wallpaper</title>
+</head>
+<style>
+   :root {
+      --blur-amount: 20px;
+      --scale-amount: 1.05;
+      --wallpaper-opacity: 1;
+      --background-color: #000000;
+   }
+   body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      width: 100vw;
+      background-color: var(--background-color);
+      overflow: hidden;
+   }
+
+   .wallpaper {
+      display: flex;
+      /* take all the space from the parent */
+      flex: 1;
+      /* center the content */
+      justify-content: center;
+      align-items: center;
+      /* make the image take all the space from the parent */
+      height: 100%;
+      width: 100%;
+      opacity: 1;
+      object-fit: cover;
+      transition: filter 0.3s ease, transform 0.3s ease, opacity .3s ease;
+      /* will-change: filter, transform; */
+   }
+
+   .wallpaper.blur {
+      filter: blur(var(--blur-amount));
+      transform: scale(var(--scale-amount));
+      opacity: var(--wallpaper-opacity);
+   }
+
+   .button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+   }
+</style>
+
+<body>
+   <img class="wallpaper" src="" />
+   <!-- <button class="button" onclick="switchBlur()">asd</button> -->
+   <!-- <img class="wallpaper" src="wallpaper.png"/> -->
+</body>
+<script>
+   const wallpaper = document.querySelector('.wallpaper')
+   const rootElement = document.querySelector(':root')
+
+   function switchBlur() {
+      wallpaper.classList.toggle('blur')
+   }
+   function blurOff () {
+      wallpaper.classList.remove('blur')
+   }
+   function blurOn () {
+      wallpaper.classList.add('blur')
+   }
+
+   function livelyPropertyListener(name, val) {
+      switch (name) {
+         case "imgSelect":
+            wallpaper.src = val
+            break;
+         case "blurAmount":
+            rootElement.style.setProperty('--blur-amount', val + 'px')
+            break;
+         case "scaleAmount":
+            rootElement.style.setProperty('--scale-amount', 1 + val / 100)
+            break;
+         case "wallpaperOpacity":
+            rootElement.style.setProperty('--wallpaper-opacity', val / 100)
+            break;
+         case "backgroundColor":
+            rootElement.style.setProperty('--background-color', val)
+            break;
+         case "blur":
+            val == true ? blurOn() : blurOff()
+            break;
+         default:
+            break;
+      }
+   }
+
+</script>

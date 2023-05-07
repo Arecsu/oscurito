@@ -1,0 +1,43 @@
+{
+   "blur": {
+      "type": "checkbox",
+      "value": false,
+      "text": "Blur"
+   },
+   "imgSelect": {
+      "type": "folderDropdown",
+      "value": "oscurito.jpg",
+      "text": "Image",
+      "filter": "*.jpg|*.png",
+      "folder": "wallpapers"
+   },
+   "blurAmount": {
+      "max": 100,
+      "min": 0,
+      "step": 1,
+      "text": "Blur intensity when windows are visible",
+      "type": "slider",
+      "value": 20
+   },
+   "scaleAmount": {
+      "max": 20,
+      "min": 0,
+      "step": 1,
+      "text": "Scale the image when windows are visible",
+      "type": "slider",
+      "value": 1
+   },
+   "wallpaperOpacity": {
+      "max": 100,
+      "min": 0,
+      "step": 1,
+      "text": "Opacity of the wallpaper when windows are visible",
+      "type": "slider",
+      "value": 100
+   },
+   "backgroundColor": {
+      "text": "Background color. Visible at the borders of the wallpaper with scale set to 1 and wallpaper opacity set to < 100",
+      "type": "color",
+      "value": "#000000"
+   }
+}

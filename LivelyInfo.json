@@ -1,0 +1,12 @@
+{
+  "AppVersion": "1.0.0.0",
+  "Title": "Oscurito",
+  "Thumbnail": "thumbnail.jpg",
+  "Preview": "preview.gif",
+  "Desc": "Blurs and/or dims the wallpaper if a window is visible (needs to run a AHK script)",
+  "Author": "Arecsu",
+  "License": "Do whatever you want with it",
+  "Contact": "https://github.com/Arecsu/oscurito",
+  "Type": 1,
+  "FileName": "wallpaper.html"
+}
