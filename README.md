@@ -1,6 +1,6 @@
 # Oscurito
 
-*A [Lively](https://github.com/rocksdanister/lively) desktop wallpaper that blurs and dims when a window is visible*
+*A [Lively](https://github.com/rocksdanister/lively) desktop wallpaper that blurs and dims when a window is visible. Light and dark mode supported*
 
 ![Screenshot](https://raw.githubusercontent.com/Arecsu/oscurito/main/preview.gif)
 

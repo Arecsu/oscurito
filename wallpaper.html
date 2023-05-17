@@ -7,24 +7,29 @@
 </head>
 <style>
    :root {
-      --blur-amount: 20px;
-      --scale-amount: 1.05;
-      --wallpaper-opacity: 1;
-      --background-color: #000000;
+      --blur-amount-light: 20px;
+      --scale-amount-light: 1.05;
+      --wallpaper-opacity-light: 1;
+      --blur-amount-dark: 20px;
+      --scale-amount-dark: 1.05;
+      --wallpaper-opacity-dark: 1;
+      --background-color-light: #000000;
+      --background-color-dark: #000000;
    }
+
    body {
       margin: 0;
       padding: 0;
       height: 100vh;
       width: 100vw;
-      background-color: var(--background-color);
+      background-color: var(--background-color-light);
       overflow: hidden;
    }
 
    .wallpaper {
-      display: flex;
-      /* take all the space from the parent */
-      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
       /* center the content */
       justify-content: center;
       align-items: center;
@@ -37,10 +42,52 @@
       /* will-change: filter, transform; */
    }
 
+   .wallpaper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      grid-area: 1 / 1 / 2 / 2;
+      transition: opacity .3s ease;
+   }
+
+   .wallpaper img.light {
+      z-index: 1;
+      opacity: 1;
+      transition-delay: 0s;
+   }
+
+   .wallpaper img.dark {
+      z-index: 2;
+      opacity: 0;
+      transition-delay: .3s;
+   }
+
    .wallpaper.blur {
-      filter: blur(var(--blur-amount));
-      transform: scale(var(--scale-amount));
-      opacity: var(--wallpaper-opacity);
+      filter: blur(var(--blur-amount-light));
+      transform: scale(var(--scale-amount-light));
+      opacity: var(--wallpaper-opacity-light);
+   }
+
+   /* prefers system dark */
+   @media (prefers-color-scheme: dark) {
+      body {
+         background-color: var(--background-color-dark);
+      }
+      .wallpaper img.light {
+         transition-delay: .3s;
+         opacity: 0;
+      }
+
+      .wallpaper img.dark {
+         transition-delay: 0s;
+         opacity: 1;
+      }
+
+      .wallpaper.blur {
+         filter: blur(var(--blur-amount-dark));
+         transform: scale(var(--scale-amount-dark));
+         opacity: var(--wallpaper-opacity-dark);
+      }
    }
 
    .button {
@@ -52,44 +99,65 @@
 </style>
 
 <body>
-   <img class="wallpaper" src="" />
+   <div class="wallpaper">
+      <img class="light" src="" />
+      <img class="dark" src="" />
+   </div>
    <!-- <button class="button" onclick="switchBlur()">asd</button> -->
    <!-- <img class="wallpaper" src="wallpaper.png"/> -->
 </body>
 <script>
-   const wallpaper = document.querySelector('.wallpaper')
+   const wallpaperContainer = document.querySelector('.wallpaper')
+   const wallpaperLight = document.querySelector('.light')
+   const wallpaperDark = document.querySelector('.dark')
    const rootElement = document.querySelector(':root')
 
    function switchBlur() {
-      wallpaper.classList.toggle('blur')
+      wallpaperContainer.classList.toggle('blur')
    }
-   function blurOff () {
-      wallpaper.classList.remove('blur')
+   function blurOff() {
+      wallpaperContainer.classList.remove('blur')
    }
-   function blurOn () {
-      wallpaper.classList.add('blur')
+   function blurOn() {
+      wallpaperContainer.classList.add('blur')
    }
 
    function livelyPropertyListener(name, val) {
       switch (name) {
-         case "imgSelect":
-            wallpaper.src = val
+         case "imgSelectLight":
+            wallpaperLight.src = val
             break;
-         case "blurAmount":
-            rootElement.style.setProperty('--blur-amount', val + 'px')
+         case "blurAmountLight":
+            rootElement.style.setProperty('--blur-amount-light', val + 'px')
             break;
-         case "scaleAmount":
-            rootElement.style.setProperty('--scale-amount', 1 + val / 100)
+         case "scaleAmountLight":
+            rootElement.style.setProperty('--scale-amount-light', 1 + val / 100)
             break;
-         case "wallpaperOpacity":
-            rootElement.style.setProperty('--wallpaper-opacity', val / 100)
+         case "wallpaperOpacityLight":
+            rootElement.style.setProperty('--wallpaper-opacity-light', val / 100)
             break;
-         case "backgroundColor":
-            rootElement.style.setProperty('--background-color', val)
+         case "imgSelectDark":
+            wallpaperDark.src = val
+            break;
+         case "blurAmountDark":
+            rootElement.style.setProperty('--blur-amount-dark', val + 'px')
+            break;
+         case "scaleAmountDark":
+            rootElement.style.setProperty('--scale-amount-dark', 1 + val / 100)
+            break;
+         case "wallpaperOpacityDark":
+            rootElement.style.setProperty('--wallpaper-opacity-dark', val / 100)
             break;
          case "blur":
             val == true ? blurOn() : blurOff()
             break;
+         case "backgroundColorLight":
+            rootElement.style.setProperty('--background-color-light', val)
+            break;
+         case "backgroundColorDark":
+            rootElement.style.setProperty('--background-color-dark', val)
+            break;
+
          default:
             break;
       }

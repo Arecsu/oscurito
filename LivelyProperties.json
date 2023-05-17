@@ -4,39 +4,75 @@
       "value": false,
       "text": "Blur"
    },
-   "imgSelect": {
+   "imgSelectLight": {
       "type": "folderDropdown",
       "value": "oscurito.jpg",
-      "text": "Image",
+      "text": "Image (Light mode)",
       "filter": "*.jpg|*.png",
       "folder": "wallpapers"
    },
-   "blurAmount": {
+   "backgroundColorLight": {
+      "text": "Background color (light)",
+      "type": "color",
+      "value": "#000000"
+   },
+   "blurAmountLight": {
       "max": 100,
       "min": 0,
       "step": 1,
-      "text": "Blur intensity when windows are visible",
+      "text": "Blur intensity (light)",
       "type": "slider",
       "value": 20
    },
-   "scaleAmount": {
+   "scaleAmountLight": {
       "max": 20,
       "min": 0,
       "step": 1,
-      "text": "Scale the image when windows are visible",
+      "text": "Scale the image (light)",
       "type": "slider",
       "value": 1
    },
-   "wallpaperOpacity": {
+   "wallpaperOpacityLight": {
       "max": 100,
       "min": 0,
       "step": 1,
-      "text": "Opacity of the wallpaper when windows are visible",
+      "text": "Opacity of the wallpaper (light)",
       "type": "slider",
       "value": 100
    },
-   "backgroundColor": {
-      "text": "Background color. Visible at the borders of the wallpaper with scale set to 1 and wallpaper opacity set to < 100",
+   "imgSelectDark": {
+      "type": "folderDropdown",
+      "value": "oscurito.jpg",
+      "text": "Image (Dark mode)",
+      "filter": "*.jpg|*.png",
+      "folder": "wallpapers"
+   },
+   "blurAmountDark": {
+      "max": 100,
+      "min": 0,
+      "step": 1,
+      "text": "Blur intensity (dark)",
+      "type": "slider",
+      "value": 20
+   },
+   "scaleAmountDark": {
+      "max": 20,
+      "min": 0,
+      "step": 1,
+      "text": "Scale the image (dark)",
+      "type": "slider",
+      "value": 1
+   },
+   "wallpaperOpacityDark": {
+      "max": 100,
+      "min": 0,
+      "step": 1,
+      "text": "Opacity of the wallpaper (dark)",
+      "type": "slider",
+      "value": 100
+   },
+   "backgroundColorDark": {
+      "text": "Background color (dark)",
       "type": "color",
       "value": "#000000"
    }
