@@ -19,6 +19,7 @@ Set the AHK script to auto-start with your computer:
 ## Options to customize
 
 - Custom wallpaper, any jpg/png
+- Different wallpapers and settings for light and dark mode system wide. Automatic detection.
 - Amount of blur
 - Amount of dimming
 - Background color (visible when dimming and at the borders of a heavily blured, and not scaled wallpaper)
